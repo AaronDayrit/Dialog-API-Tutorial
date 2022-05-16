@@ -1,83 +1,101 @@
-## Fetch API
+## Dialog Tag
 
-The Fetch API provides a generic definition of ```Request``` and ```Response```
-objects (and other things involved with network requests). It also defines
-related concepts such as CORS and the HTTP Origin header semantics, supplanting
-their separate definitions elsewhere. Fetch returns a ```Promise```, an object
-represents the eventual completion (or failure) of an asynchronous operation
-and its resulting value.
+The ```<dialog>``` tag has been introduced to web development to create easier lightboxes and modals. They are easy to style and call and close using built-in JavaScript methods.
 
-### Asynchronous functions
+### HTML
 
-The magic of ```async``` functions is that we can write asynchronous code that
-looks like synchronous code. It's still asynchronous code but instead of
-results and errors landing inside callback functions, errors are thrown
-naturally as exceptions and results naturally land on the next line of code.
+Think of ```<dialog>``` tags as a simple container or ```<div>```. You can insert whatever content inside such as ```<h2>```, ```<p>```, or ```<img>```.
 
-The key features of ```async``` functions are:
+```html
 
-- ```async``` functions implicitly create and return promises.
-- In an ```async``` function, ```await``` consumes promises, marking a point
-  where the code will wait asynchronously for the promise to settle.
-- While the function is waiting for the promisse to settle, the thread can run
-  other code.
-- Exceptions are rejections, and rejections are exceptions; returns are
-  resolutions, and fulfillments are results (that is, if you ```await``` a
-  promise, you see the promise's fulfillment value as the result of the ```await```
-  expression).
+<body>
+    <div id="wrapper">
+        <dialog>
+            <h2>DIALOG TITLE</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus vero quidem officia rerum veritatis,
+                ab est! Nemo, aliquid perferendis.
+            </p>
+            <button class="create">Accept</button>
+        </dialog>
+    </div>
+</body>
 
-### Fetch API in action
-
-The simplest use of ```fetch()``` takes one argument - the path to the resource
-you want to fetch - and does not directly return the JSON response body but
-instead returns a ```Promise``` that resolves with a ```Response``` object.
-
-The ```Response``` object, in turn, does not directly contain the actual JSON
-response body but is instead a representation of the entire HTTP response. So,
-to extract the JSON body content from the ```Response``` object, we use the
-```json()``` method, which returns a second promise that resolves with the
-result of parsing the response body text as JSON.
-
-```javascript
-const url = 'https://movies.andrespecht.dev';
-
-const options = {
-  method: 'GET',
-  mode: 'cors'
-};
-
-async function getMovies() {
-  try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(`${response.statusText} (${response.status})`);
-    }
-    // Parsing the reponse as JSON
-    const data = await response.json();
-    // Printing the movies
-    console.table(data.results);
-  } catch(error) {
-    console.log(error);
-  }
-};
-
-getMovies();
 ```
 
-### CORS
+### CSS
 
-Cross-Origin Resource Sharing (CORS) is a protocol that enables scripts running
-on a browser client to interact with resources from a different origin. This is
-useful because, thanks to the same-origin policy followed by ```fetch```,
-JavaScript can only make calls to URLs that live on the same origin as the
-location where the script is running. For example, if a JavaScript app wishes
-to make an AJAX call to an API running on a different domain, it would be
-blocked from doing so thanks to the same-origin policy.
+When styling, they don't differ that much from a ```<div>``` either. You have some extra ```pseudo-elements``` such as ```<backdrop>``` for quality of life.
 
-### References
+```css
+dialog{
+    margin: auto;
+    width: 340px;
+    padding: 19px 25px 25px 25px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / .1);
+}
 
-- [JavaScript cookbook](https://www.oreilly.com/library/view/javascript-cookbook-3rd/9781492055747/)
-- [JavaScript: the new toys](https://www.wiley.com/en-us/JavaScript:+The+New+Toys-p-9781119367963)
-- [Professional JavaScript for web developers](https://www.wiley.com/en-us/Professional+JavaScript+for+Web+Developers%2C+4th+Edition-p-9781119366447)
-- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [Async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+dialog::backdrop{
+    background-color: rgb(0 0 0 / .45);
+}
+
+dialog[open]{
+    animation: appear 0.35s ease-in-out;
+}
+
+/*------------------------------------
+    Dialog content styling
+--------------------------------------*/
+
+dialog h2{
+    font-size: 28px;
+}
+
+dialog p{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 25px;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    margin-top: 25px;
+    border-radius: 6px;
+    width: 105px;
+    height: 45px;
+    font-size: 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    background-color: #8137f0;
+    color: white;
+    transition: 0.2s ease-in-out;
+}
+```
+### JavaScript
+There are two main methods to look out for when using. ```dialogName.showModal()``` is the method to make your dialog appear. ```dialogName.close()```is the method to make your dialog disappear.
+
+```javascript
+
+window.onload = () => {
+  // Method to --> show modal <--
+  dialog.showModal();
+};
+
+create.addEventListener('click', () => {
+  // Method to --> close modal <--
+  dialog.close();
+})
+
+```
+### Sources
+
+- [Developer.Mozilla](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+- [W3schools](https://www.w3schools.com/tags/tag_dialog.asp)
+- [Javatpoint](https://www.javatpoint.com/html-dialog-tag)
