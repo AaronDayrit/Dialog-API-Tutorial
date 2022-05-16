@@ -29,7 +29,7 @@ content inside such as ```<h2>```, ```<p>```, or ```<img>```.
 ### CSS
 
 When styling, they don't differ that much from a ```<div>``` either. You have some extra 
-```pseudo-elements``` such as ```<backdrop>``` for quality of life.
+```pseudo-elements``` such as ```dialog::backdrop``` to change the background of your dialog.
 
 ```css
 dialog{
