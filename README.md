@@ -16,9 +16,8 @@ content inside such as ```<h2>```, ```<p>```, or ```<img>```.
         <dialog>
             <h2>DIALOG TITLE</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur 
-                adipisicing elit. Delectus vero quidem officia rerum 
-                veritatis, ab est! Nemo, aliquid perferendis.
+               Here you put some content for your dialog container. It can be anything you
+                want as it acts mostly like a regular div element.
             </p>
             <button class="create">Accept</button>
         </dialog>
