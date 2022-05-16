@@ -1,10 +1,13 @@
 ## Dialog Tag
 
-The ```<dialog>``` tag has been introduced to web development to create easier lightboxes and modals. They are easy to style and call and close using built-in JavaScript methods.
+The ```<dialog>``` tag has been introduced to web development to create easier lightboxes 
+and most commonly, modals to allow communication with the usesr. They are easy to style 
+and call and close using built-in JavaScript methods.
 
 ### HTML
 
-Think of ```<dialog>``` tags as a simple container or ```<div>```. You can insert whatever content inside such as ```<h2>```, ```<p>```, or ```<img>```.
+Think of ```<dialog>``` tags as a simple container or ```<div>```. You can insert whatever 
+content inside such as ```<h2>```, ```<p>```, or ```<img>```.
 
 ```html
 
@@ -13,8 +16,9 @@ Think of ```<dialog>``` tags as a simple container or ```<div>```. You can inser
         <dialog>
             <h2>DIALOG TITLE</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus vero quidem officia rerum veritatis,
-                ab est! Nemo, aliquid perferendis.
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Delectus vero quidem officia rerum 
+                veritatis, ab est! Nemo, aliquid perferendis.
             </p>
             <button class="create">Accept</button>
         </dialog>
@@ -25,7 +29,8 @@ Think of ```<dialog>``` tags as a simple container or ```<div>```. You can inser
 
 ### CSS
 
-When styling, they don't differ that much from a ```<div>``` either. You have some extra ```pseudo-elements``` such as ```<backdrop>``` for quality of life.
+When styling, they don't differ that much from a ```<div>``` either. You have some extra 
+```pseudo-elements``` such as ```<backdrop>``` for quality of life.
 
 ```css
 dialog{
@@ -79,7 +84,8 @@ button{
 }
 ```
 ### JavaScript
-There are two main methods to look out for when using. ```dialogName.showModal()``` is the method to make your dialog appear. ```dialogName.close()```is the method to make your dialog disappear.
+There are two main methods to look out for when using. ```dialogName.showModal()``` 
+is the method to make your dialog appear. ```dialogName.close()```is the method to make your dialog disappear.
 
 ```javascript
 
